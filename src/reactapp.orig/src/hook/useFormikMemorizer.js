@@ -12,9 +12,9 @@ export default function useFormikMemorizer(formSectionId) {
     setFieldTouched,
   } = useFormikContext();
 
-  const formSectionErrors = errors?.formSectionId;
-  const formSectionValues = values?.formSectionId;
-  const formSectionTouched = touched?.formSectionId;
+  const formSectionErrors = errors?.[formSectionId];
+  const formSectionValues = values?.[formSectionId];
+  const formSectionTouched = touched?.[formSectionId];
   const isFormSectionTouched = !!formSectionTouched;
   const isFormSectionValid =
     dirty && isFormSectionTouched && !formSectionErrors;

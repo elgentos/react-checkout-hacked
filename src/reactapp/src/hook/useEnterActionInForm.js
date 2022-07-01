@@ -1,11 +1,10 @@
-import { get as _get } from 'lodash-es';
 import { object as YupObject } from 'yup';
 
-export default function useEnterActionInForm({
+export default function useEnterActionInForm(
   formikData,
-  submitHandler,
   validationSchema,
-}) {
+  submitHandler
+) {
   const { formSectionValues } = formikData || {};
 
   return (event) => {
@@ -22,7 +21,7 @@ export default function useEnterActionInForm({
       },
     } = event;
     const currentTargetIndex = [...formElements].indexOf(target);
-    const nextFormElement = _get(formElements, currentTargetIndex + 1);
+    const nextFormElement = formElements?.[currentTargetIndex + 1];
 
     // focusing on button element seems to trigger button click event
     if (nextFormElement && nextFormElement.tagName.toLowerCase() !== 'button') {

@@ -1,7 +1,16 @@
 import { get as _get, set as _set } from 'lodash-es';
 
-import { config } from '../config';
-import { _cleanObjByKeys, _keys } from './index';
+import config from '../config';
+
+export function _keys(obj = {}) {
+  return Object.keys(obj);
+}
+
+export function _cleanObjByKeys(obj, keys = []) {
+  const newObj = { ...obj };
+  keys.forEach((key) => delete newObj[key]);
+  return newObj;
+}
 
 const hyvaStorageKey = _get(config, 'hyvaStorageSource.storageKey');
 const mostRecentlyUsedAddressListSource = _get(

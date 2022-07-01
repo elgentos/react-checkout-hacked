@@ -1,15 +1,7 @@
 import { useContext, useEffect } from 'react';
-import CheckoutContext from '../context/CheckoutContext';
 
-function prepareFields(values, sectionId) {
-  const fields = {};
-
-  Object.keys(values).forEach((fieldName) => {
-    fields[fieldName] = `${sectionId}.${fieldName}`;
-  });
-
-  return fields;
-}
+import CheckoutFormContext from '../context/Form/CheckoutFormContext';
+import { prepareFields } from '../context/utility';
 
 /**
  * This hook will be used by individual form section managers
@@ -21,7 +13,7 @@ function useFormSection(
   submitHandler,
   validationSchema
 ) {
-  const { registerFormSection } = useContext(CheckoutContext);
+  const { registerFormSection } = useContext(CheckoutFormContext);
   const { isFormSectionValid } = formikData || {};
 
   /**
